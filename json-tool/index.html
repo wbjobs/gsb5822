@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JSON 工具 · 格式化 / 压缩 / 校验</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+  <h1>JSON 工具</h1>
+  <span class="subtitle">格式化 · 压缩 · 校验 · 排序键 · 转义 / 去转义（Web Worker 后台解析，大文件不卡界面）</span>
+</header>
+
+<div id="toolbar">
+  <button id="btn-format">格式化</button>
+  <button id="btn-minify">压缩</button>
+  <button id="btn-validate">校验</button>
+  <button id="btn-sort">排序键</button>
+  <span class="sep"></span>
+  <button id="btn-escape">转义</button>
+  <button id="btn-unescape">去转义</button>
+  <span class="sep"></span>
+  <label>缩进
+    <select id="indent">
+      <option value="2" selected>2 空格</option>
+      <option value="4">4 空格</option>
+      <option value="tab">Tab</option>
+    </select>
+  </label>
+  <span class="sep"></span>
+  <button id="btn-copy">复制结果</button>
+  <button id="btn-clear">清空</button>
+  <span id="busy" class="busy">⏳ 处理中…</span>
+</div>
+
+<div id="error-panel" class="panel error" hidden></div>
+<div id="warn-panel" class="panel warn" hidden></div>
+
+<main>
+  <section class="editor-pane">
+    <div class="pane-title">输入</div>
+    <textarea id="input" spellcheck="false" placeholder='在此粘贴 JSON，例如 {"a": 1, "b": [true, null, 123456789012345678901234567890]}'></textarea>
+  </section>
+  <section class="editor-pane">
+    <div class="pane-title">输出</div>
+    <textarea id="output" spellcheck="false" readonly placeholder="结果将显示在这里"></textarea>
+  </section>
+  <aside class="history-pane">
+    <div class="pane-title">
+      最近输入（最多 10 条）
+      <button id="btn-clear-history" title="清空历史">清空</button>
+    </div>
+    <div id="history-list"></div>
+  </aside>
+</main>
+
+<footer>
+  <span id="status">就绪</span>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
