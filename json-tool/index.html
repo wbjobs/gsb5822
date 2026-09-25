@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSON 工具箱</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>JSON 工具箱</h1>
+    <div class="toolbar">
+      <button data-action="format" class="primary">格式化</button>
+      <button data-action="compress">压缩</button>
+      <button data-action="validate">校验</button>
+      <button data-action="sort">排序键</button>
+      <span class="sep"></span>
+      <button data-action="escape">转义</button>
+      <button data-action="unescape">去转义</button>
+      <span class="sep"></span>
+      <label class="indent-label">缩进
+        <select id="indent">
+          <option value="2" selected>2 空格</option>
+          <option value="4">4 空格</option>
+          <option value="\t">Tab</option>
+        </select>
+      </label>
+      <button id="copyBtn">复制结果</button>
+      <button id="clearBtn">清空</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="pane">
+      <div class="pane-title">输入</div>
+      <textarea id="input" spellcheck="false" placeholder='在此粘贴 JSON，例如 {"a":1,"b":[true,null,"x"]}'></textarea>
+    </section>
+    <section class="pane">
+      <div class="pane-title">输出</div>
+      <textarea id="output" spellcheck="false" readonly placeholder="结果将显示在这里"></textarea>
+    </section>
+  </main>
+
+  <div id="errorBox" class="error-box hidden">
+    <span id="errorText"></span>
+    <button id="locateBtn">定位到错误</button>
+  </div>
+  <div id="warnBox" class="warn-box hidden"></div>
+
+  <footer>
+    <span id="status">就绪</span>
+    <span id="workerStatus" class="muted"></span>
+  </footer>
+
+  <aside id="historyPanel">
+    <div class="history-head">
+      <span>最近历史（最多 10 条）</span>
+      <button id="clearHistoryBtn">清空历史</button>
+    </div>
+    <ul id="historyList"></ul>
+  </aside>
+
+  <script src="worker.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
